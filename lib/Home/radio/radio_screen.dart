@@ -24,7 +24,7 @@ class RadioScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Icon(
-                Icons.skip_next,
+                Icons.skip_previous,
                 size: width / 11,
               ),
               Icon(
@@ -32,7 +32,7 @@ class RadioScreen extends StatelessWidget {
                 size: width / 7,
               ),
               Icon(
-                Icons.skip_previous,
+                Icons.skip_next,
                 size: width / 11,
               ),
             ],

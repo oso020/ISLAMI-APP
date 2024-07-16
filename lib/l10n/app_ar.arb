@@ -11,5 +11,8 @@
   "settings": "الاعدادات",
   "english": "الانجليزيه",
   "arabic": "العريبه",
-  "language": "اللغه"
+  "language": "اللغه",
+  "theme": "الاضائه",
+  "light": "مضي",
+  "dark": "مظلم"
 }

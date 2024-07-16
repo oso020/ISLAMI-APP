@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/Home/quran/TextButtonQuran.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:islami_app/theme_app/color_app.dart';
+import 'package:provider/provider.dart';
 
 class QuranScreen extends StatelessWidget {
   QuranScreen({super.key});
@@ -124,6 +127,7 @@ class QuranScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Column(
       children: [
         Image.asset("assets/images/quran_image.png"),
@@ -131,8 +135,12 @@ class QuranScreen extends StatelessWidget {
         Center(
           child: Text(
             AppLocalizations.of(context)!.sura_name,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+              style: provider.theme == ThemeMode.light
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: ColorApp.whiteColor)),
         ),
         const Divider(),
         Expanded(

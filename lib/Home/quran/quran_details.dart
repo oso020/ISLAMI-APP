@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/theme_app/color_app.dart';
+import 'package:provider/provider.dart';
 
 import 'TextButtonQuran.dart';
 import 'content_quran_details.dart';
@@ -20,22 +22,29 @@ class _DetailsScreenQuranState extends State<DetailsScreenQuran> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as QuranData;
+    var provider = Provider.of<AppConfigProvider>(context);
     if (verses.isEmpty) {
       loadFile(args.index);
     }
     return Container(
       height: double.infinity,
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background.png"),
+              image: provider.theme == ThemeMode.light
+                  ? AssetImage("assets/images/background.png")
+                  : AssetImage("assets/images/bg.png"),
               fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
             args.name,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+              style: provider.theme == ThemeMode.light
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: ColorApp.whiteColor)),
         ),
         body: Container(
           margin: EdgeInsets.symmetric(
@@ -47,7 +56,7 @@ class _DetailsScreenQuranState extends State<DetailsScreenQuran> {
           child: verses.isEmpty
               ? Center(
                   child: CircularProgressIndicator(
-                    color: ColorApp.primaryColor,
+                    color: ColorApp.primaryLightColor,
                   ),
                 )
               : ListView.separated(

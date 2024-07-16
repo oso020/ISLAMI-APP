@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Home/quran/quran_details.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_config_provider.dart';
+import '../../theme_app/color_app.dart';
 
 class TextButtonQuran extends StatelessWidget {
   final String name;
@@ -9,6 +13,8 @@ class TextButtonQuran extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, DetailsScreenQuran.routeName,
@@ -17,7 +23,12 @@ class TextButtonQuran extends StatelessWidget {
       child: Text(
         textAlign: TextAlign.center,
         name,
-        style: Theme.of(context).textTheme.bodyMedium,
+        style: provider.theme == ThemeMode.light
+            ? Theme.of(context).textTheme.bodyLarge
+            : Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: ColorApp.whiteColor),
       ),
     );
   }
