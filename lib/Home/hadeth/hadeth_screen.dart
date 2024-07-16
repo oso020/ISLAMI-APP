@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/theme_app/color_app.dart';
 
 import 'TextButtonHadeth.dart';
@@ -25,7 +26,7 @@ class _HadethScreenState extends State<HadethScreen> {
         const Divider(),
         Center(
           child: Text(
-            "AHadeth Name ",
+            AppLocalizations.of(context)!.hadeth_name,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),

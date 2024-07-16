@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/theme_app/color_app.dart';
 
 class SebhaScreen extends StatefulWidget {
@@ -46,7 +47,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
             ),
           ),
           Text(
-            "Number of hymns",
+            AppLocalizations.of(context)!.number_of_hymns,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           Padding(
