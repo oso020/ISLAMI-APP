@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RadioScreen extends StatelessWidget {
   const RadioScreen({super.key});
@@ -14,8 +15,8 @@ class RadioScreen extends StatelessWidget {
           child: Image.asset("assets/images/radio_image.png"),
         ),
         Text(
-          "Holy Quran Radio ",
-          style: Theme.of(context).textTheme.bodyMedium,
+          AppLocalizations.of(context)!.quran_radio,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         Padding(
           padding: EdgeInsets.only(top: height / 20),
@@ -23,7 +24,7 @@ class RadioScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Icon(
-                Icons.skip_previous,
+                Icons.skip_next,
                 size: width / 11,
               ),
               Icon(
@@ -31,7 +32,7 @@ class RadioScreen extends StatelessWidget {
                 size: width / 7,
               ),
               Icon(
-                Icons.skip_next,
+                Icons.skip_previous,
                 size: width / 11,
               ),
             ],

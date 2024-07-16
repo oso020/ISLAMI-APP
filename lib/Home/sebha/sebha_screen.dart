@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/theme_app/color_app.dart';
 
-class SebhaScreen extends StatelessWidget {
+class SebhaScreen extends StatefulWidget {
   const SebhaScreen({super.key});
 
   @override
+  State<SebhaScreen> createState() => _SebhaScreenState();
+}
+
+class _SebhaScreenState extends State<SebhaScreen> {
+  double turns = 0.0;
+  List<String> text = [
+    "سبحان الله",
+    "الحمد الله",
+    "استغفر الله",
+  ];
+  String result = "";
+  int counter = 0;
+  int textIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
+    result = text[textIndex];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return SizedBox(
@@ -17,29 +34,35 @@ class SebhaScreen extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                Image.asset("assets/images/body_of_seb7a.png"),
+                AnimatedRotation(
+                    turns: turns,
+                    duration: const Duration(seconds: 1),
+                    child: Image.asset("assets/images/body_of_seb7a.png")),
                 Positioned(
                   bottom: height / 4.2,
-                  left: width / 5,
+                  left: width / 4,
                   child: Image.asset("assets/images/head_of_seb7a.png"),
                 ),
               ],
             ),
           ),
           Text(
-            "Number of hymns",
-            style: Theme.of(context).textTheme.bodyMedium,
+            AppLocalizations.of(context)!.number_of_hymns,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           Padding(
             padding: EdgeInsets.only(top: height / 25),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               decoration: BoxDecoration(
-                  color: const Color(0xffB7935F),
+                  color: const Color(0xffC8B396),
                   borderRadius: BorderRadius.circular(25)),
               child: Text(
-                "30",
-                style: Theme.of(context).textTheme.bodyMedium,
+                counter.toString(),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -49,17 +72,37 @@ class SebhaScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorApp.primaryColor,
                 ),
-                onPressed: () {},
-                child: const Text(
-                  "سبحان الله",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
+                onPressed: () {
+                  rotationSebha();
+                  changeText();
+                },
+                child: Text(
+                  result,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Colors.white,
+                      ),
                 )),
           )
         ],
       ),
     );
+  }
+
+  void rotationSebha() {
+    turns += 1 / 28;
+    setState(() {});
+  }
+
+  void changeText() {
+    counter++;
+    if (counter == 33) {
+      counter = 0;
+      if (textIndex == text.length - 1) {
+        textIndex = 0;
+      } else {
+        textIndex += 1;
+      }
+      result = text[textIndex];
+    }
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/Home/hadeth/hadeth_screen.dart';
 import 'package:islami_app/Home/quran/quran_screen.dart';
 import 'package:islami_app/Home/radio/radio_screen.dart';
 import 'package:islami_app/Home/sebha/sebha_screen.dart';
+import 'package:islami_app/Home/settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "home_screen";
@@ -35,31 +37,35 @@ class _HomeScreenState extends State<HomeScreen> {
               currentIndex = selectedItem;
               setState(() {});
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                label: "Quran",
+                label: AppLocalizations.of(context)!.quran,
                 icon: ImageIcon(AssetImage(
                   "assets/images/icon_quran.png",
                 )),
               ),
               BottomNavigationBarItem(
-                label: "Hadeth",
+                label: AppLocalizations.of(context)!.hadeth,
                 icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
               ),
               BottomNavigationBarItem(
-                label: "Sebha",
+                label: AppLocalizations.of(context)!.sebha,
                 icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),
               ),
               BottomNavigationBarItem(
-                label: "radio",
+                label: AppLocalizations.of(context)!.radio,
                 icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
+              ),
+              BottomNavigationBarItem(
+                label: AppLocalizations.of(context)!.settings,
+                icon: Icon(Icons.settings),
               ),
             ],
           ),
         ),
         appBar: AppBar(
           title: Text(
-            "Islami",
+            AppLocalizations.of(context)!.islami,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -72,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
     QuranScreen(),
     HadethScreen(),
     const SebhaScreen(),
-    const RadioScreen()
+    const RadioScreen(),
+    const SettingsScreen(),
   ];
 }
