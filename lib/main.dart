@@ -11,7 +11,8 @@ import 'Home/hadeth/hadeth_screen.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: (context) => AppConfigProvider(), child: const MyApp()));
+      create: (BuildContext context) => AppConfigProvider(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(provider.appLanguage),
       initialRoute: HomeScreen.routeName,
+      themeMode: provider.theme,
+      darkTheme: ThemeApp.darktMode,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         DetailsScreenQuran.routeName: (context) => DetailsScreenQuran(),

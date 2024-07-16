@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/theme_app/color_app.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_config_provider.dart';
 
 class SebhaScreen extends StatefulWidget {
   const SebhaScreen({super.key});
@@ -25,6 +28,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
     result = text[textIndex];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -37,11 +42,15 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 AnimatedRotation(
                     turns: turns,
                     duration: const Duration(seconds: 1),
-                    child: Image.asset("assets/images/body_of_seb7a.png")),
+                    child: provider.theme == ThemeMode.light
+                        ? Image.asset("assets/images/body_of_seb7a.png")
+                        : Image.asset("assets/images/dark_body_of_seb7a.png")),
                 Positioned(
                   bottom: height / 4.2,
                   left: width / 4,
-                  child: Image.asset("assets/images/head_of_seb7a.png"),
+                  child: provider.theme == ThemeMode.light
+                      ? Image.asset("assets/images/head_of_seb7a.png")
+                      : Image.asset("assets/images/dark_head_of_seb7a.png"),
                 ),
               ],
             ),
@@ -55,7 +64,9 @@ class _SebhaScreenState extends State<SebhaScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               decoration: BoxDecoration(
-                  color: const Color(0xffC8B396),
+                  color: provider.theme == ThemeMode.light
+                      ? Color(0xffC8B396)
+                      : ColorApp.primaryDarkColorBlue,
                   borderRadius: BorderRadius.circular(25)),
               child: Text(
                 counter.toString(),
@@ -69,9 +80,11 @@ class _SebhaScreenState extends State<SebhaScreen> {
           Padding(
             padding: EdgeInsets.only(top: height / 25),
             child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorApp.primaryColor,
-                ),
+                style: provider.theme == ThemeMode.light
+                    ? ElevatedButton.styleFrom(
+                        backgroundColor: ColorApp.primaryLightColor)
+                    : ElevatedButton.styleFrom(
+                        backgroundColor: ColorApp.primaryDarkColor),
                 onPressed: () {
                   rotationSebha();
                   changeText();
