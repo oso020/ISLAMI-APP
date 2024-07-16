@@ -7,5 +7,12 @@
   "radio": "الإذاعة",
   "hadeth_name": "اسم الحديث",
   "number_of_hymns": "عدد التسبيحات",
-  "quran_radio": "إذاعة القرأن"
+  "quran_radio": "إذاعة القرأن",
+  "settings": "الاعدادات",
+  "english": "الانجليزيه",
+  "arabic": "العريبه",
+  "language": "اللغه",
+  "theme": "الاضائه",
+  "light": "مضي",
+  "dark": "مظلم"
 }

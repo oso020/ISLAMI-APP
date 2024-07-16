@@ -16,7 +16,7 @@ class RadioScreen extends StatelessWidget {
         ),
         Text(
           AppLocalizations.of(context)!.quran_radio,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         Padding(
           padding: EdgeInsets.only(top: height / 20),

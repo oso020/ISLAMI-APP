@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Home/hadeth/hadeth_details.dart';
 import 'package:islami_app/Home/hadeth/hadeth_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_config_provider.dart';
+import '../../theme_app/color_app.dart';
 
 class TextButtonHadeth extends StatelessWidget {
   final HadethData hadethData;
@@ -9,6 +13,8 @@ class TextButtonHadeth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, DetailsScreenHadeth.routeName,
@@ -17,8 +23,12 @@ class TextButtonHadeth extends StatelessWidget {
       child: Text(
         textAlign: TextAlign.center,
         hadethData.tilte,
-        style: Theme.of(context).textTheme.bodyMedium,
-      ),
+          style: provider.theme == ThemeMode.light
+              ? Theme.of(context).textTheme.bodyLarge
+              : Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: ColorApp.whiteColor)),
     );
   }
 }
