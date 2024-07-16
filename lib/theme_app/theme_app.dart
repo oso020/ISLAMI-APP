@@ -5,8 +5,8 @@ class ThemeApp {
   static final ThemeData lightMode = ThemeData(
     primaryColor: ColorApp.primaryColor,
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: AppBarTheme(
-        backgroundColor: Colors.transparent, elevation: 0, centerTitle: true),
+      appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent, elevation: 0, centerTitle: true),
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
           fontSize: 30,
@@ -17,9 +17,13 @@ class ThemeApp {
           fontWeight: FontWeight.w400,
           color: ColorApp.blackColor),
     ),
-    dividerTheme: DividerThemeData(thickness: 3, color: ColorApp.primaryColor),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: ColorApp.blackColor,
+      dividerTheme:
+          const DividerThemeData(thickness: 3, color: ColorApp.primaryColor),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: ColorApp.primaryColor,
+        selectedItemColor: ColorApp.blackColor,
     ),
-  );
+      iconTheme: IconThemeData(
+        color: ColorApp.primaryColor,
+      ));
 }
