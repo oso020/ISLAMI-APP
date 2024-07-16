@@ -4,6 +4,7 @@ import 'package:islami_app/Home/hadeth/hadeth_screen.dart';
 import 'package:islami_app/Home/quran/quran_screen.dart';
 import 'package:islami_app/Home/radio/radio_screen.dart';
 import 'package:islami_app/Home/sebha/sebha_screen.dart';
+import 'package:islami_app/Home/settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "home_screen";
@@ -55,6 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: AppLocalizations.of(context)!.radio,
                 icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
               ),
+              BottomNavigationBarItem(
+                label: AppLocalizations.of(context)!.settings,
+                icon: Icon(Icons.settings),
+              ),
             ],
           ),
         ),
@@ -73,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
     QuranScreen(),
     HadethScreen(),
     const SebhaScreen(),
-    const RadioScreen()
+    const RadioScreen(),
+    const SettingsScreen(),
   ];
 }

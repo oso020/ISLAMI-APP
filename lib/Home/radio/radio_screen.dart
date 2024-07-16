@@ -16,7 +16,7 @@ class RadioScreen extends StatelessWidget {
         ),
         Text(
           AppLocalizations.of(context)!.quran_radio,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         Padding(
           padding: EdgeInsets.only(top: height / 20),
@@ -24,7 +24,7 @@ class RadioScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Icon(
-                Icons.skip_previous,
+                Icons.skip_next,
                 size: width / 11,
               ),
               Icon(
@@ -32,7 +32,7 @@ class RadioScreen extends StatelessWidget {
                 size: width / 7,
               ),
               Icon(
-                Icons.skip_next,
+                Icons.skip_previous,
                 size: width / 11,
               ),
             ],

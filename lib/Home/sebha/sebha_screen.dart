@@ -48,7 +48,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
           ),
           Text(
             AppLocalizations.of(context)!.number_of_hymns,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           Padding(
             padding: EdgeInsets.only(top: height / 25),
@@ -97,10 +97,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
     counter++;
     if (counter == 33) {
       counter = 0;
-      if (textIndex < text.length - 1) {
-        textIndex += 1;
-      } else {
+      if (textIndex == text.length - 1) {
         textIndex = 0;
+      } else {
+        textIndex += 1;
       }
       result = text[textIndex];
     }

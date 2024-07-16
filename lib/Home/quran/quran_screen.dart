@@ -131,7 +131,7 @@ class QuranScreen extends StatelessWidget {
         Center(
           child: Text(
             AppLocalizations.of(context)!.sura_name,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
         const Divider(),
