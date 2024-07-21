@@ -13,6 +13,7 @@ class ContentQuranDetails extends StatelessWidget {
       "${verses[index]} (${index + 1})",
       textAlign: TextAlign.center,
       textDirection: TextDirection.rtl,
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 }

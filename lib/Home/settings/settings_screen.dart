@@ -48,10 +48,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    provider.appLanguage == "en"
+                    provider.locale == "en"
                         ? AppLocalizations.of(context)!.english
                         : AppLocalizations.of(context)!.arabic,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Icon(
                     Icons.arrow_downward,
@@ -82,7 +82,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.dark,
+                    provider.theme == ThemeMode.light
+                        ? AppLocalizations.of(context)!.light
+                        : AppLocalizations.of(context)!.dark,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Icon(
                     Icons.arrow_downward,
