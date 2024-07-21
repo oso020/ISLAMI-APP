@@ -52,7 +52,7 @@ class _DetailsScreenQuranState extends State<DetailsScreenQuran> {
               horizontal: MediaQuery.of(context).size.width * 0.05),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(35),
-              color: Color(0x9ef8f8f8)),
+              color: Theme.of(context).primaryColor),
           child: verses.isEmpty
               ? Center(
                   child: CircularProgressIndicator(
@@ -60,7 +60,9 @@ class _DetailsScreenQuranState extends State<DetailsScreenQuran> {
                   ),
                 )
               : ListView.separated(
-                  separatorBuilder: (context, index) => Divider(),
+                  separatorBuilder: (context, index) => Divider(
+                    color: ColorApp.whiteColor,
+                  ),
                   itemCount: verses.length,
                   itemBuilder: (context, index) {
                     return ContentQuranDetails(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/Home/quran/TextButtonQuran.dart';
 import 'package:islami_app/providers/app_config_provider.dart';
-import 'package:islami_app/theme_app/color_app.dart';
 import 'package:provider/provider.dart';
 
 class QuranScreen extends StatelessWidget {
@@ -135,12 +134,7 @@ class QuranScreen extends StatelessWidget {
         Center(
           child: Text(
             AppLocalizations.of(context)!.sura_name,
-              style: provider.theme == ThemeMode.light
-                  ? Theme.of(context).textTheme.bodyLarge
-                  : Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: ColorApp.whiteColor)),
+              style: Theme.of(context).textTheme.bodyLarge),
         ),
         const Divider(),
         Expanded(

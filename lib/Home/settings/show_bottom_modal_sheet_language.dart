@@ -24,14 +24,14 @@ class _ModalSheetState extends State<ModalSheet> {
               onTap: () {
                 provider.changeLanguage("en");
               },
-              child: provider.appLanguage == "en"
+              child: provider.locale == "en"
                   ? selectedWidget(AppLocalizations.of(context)!.english)
                   : unSelectedWidget(AppLocalizations.of(context)!.english)),
           InkWell(
               onTap: () {
                 provider.changeLanguage("ar");
               },
-              child: provider.appLanguage == "ar"
+              child: provider.locale == "ar"
                   ? selectedWidget(AppLocalizations.of(context)!.arabic)
                   : unSelectedWidget(AppLocalizations.of(context)!.arabic))
         ],
