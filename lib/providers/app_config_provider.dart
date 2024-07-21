@@ -3,31 +3,40 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppConfigProvider extends ChangeNotifier {
   String locale;
+  bool mode;
+  ThemeMode theme;
 
-  AppConfigProvider({this.locale = "en"});
+  AppConfigProvider({this.locale = "en", this.mode = true})
+      : theme = mode ? ThemeMode.dark : ThemeMode.light;
 
-  ThemeMode theme = ThemeMode.light;
-
-  void changeLanguage(String newLanguage) async {
+  void changeLanguage(String newLanguage) {
     if (locale == newLanguage) {
       return;
     }
     locale = newLanguage;
     notifyListeners();
-    saveData();
+    saveDataLocalization();
   }
 
-  void saveData() async {
+  void saveDataLocalization() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('appLanguage', locale);
     notifyListeners();
   }
 
-  void changTheme(ThemeMode newTheme) {
+  void saveDataTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('theme', mode);
+    notifyListeners();
+  }
+
+  void changeTheme(ThemeMode newTheme) {
     if (theme == newTheme) {
       return;
     }
     theme = newTheme;
+    mode = newTheme == ThemeMode.dark;
     notifyListeners();
+    saveDataTheme();
   }
 }

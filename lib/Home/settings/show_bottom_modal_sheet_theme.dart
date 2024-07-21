@@ -23,14 +23,14 @@ class _ModalSheetThemeState extends State<ModalSheetTheme> {
         children: [
           InkWell(
               onTap: () {
-                provider.changTheme(ThemeMode.light);
+                provider.changeTheme(ThemeMode.light);
               },
               child: provider.theme == ThemeMode.light
                   ? selectedWidget(AppLocalizations.of(context)!.light)
                   : unSelectedWidget(AppLocalizations.of(context)!.light)),
           InkWell(
               onTap: () {
-                provider.changTheme(ThemeMode.dark);
+                provider.changeTheme(ThemeMode.dark);
               },
               child: provider.theme == ThemeMode.dark
                   ? selectedWidget(AppLocalizations.of(context)!.dark)

@@ -14,10 +14,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   final String? savedLanguage = sharedPreferences.getString('appLanguage');
+  final bool? theme = sharedPreferences.getBool('theme');
 
   runApp(ChangeNotifierProvider(
-      create: (BuildContext context) =>
-          AppConfigProvider(locale: savedLanguage ?? "en"),
+      create: (BuildContext context) => AppConfigProvider(
+          locale: savedLanguage ?? "en", mode: theme ?? false),
       child: const MyApp()));
 }
 
