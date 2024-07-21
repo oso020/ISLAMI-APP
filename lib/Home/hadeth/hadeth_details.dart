@@ -47,7 +47,7 @@ class _DetailsScreenQuranState extends State<DetailsScreenHadeth> {
               horizontal: MediaQuery.of(context).size.width * 0.05),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(35),
-              color: Color(0x9ef8f8f8)),
+              color: Theme.of(context).primaryColor),
           child: ListView.separated(
             separatorBuilder: (context, index) => Divider(
               color: ColorApp.whiteColor,

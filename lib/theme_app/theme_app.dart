@@ -26,6 +26,7 @@ class ThemeApp {
       iconTheme: IconThemeData(
         color: ColorApp.primaryLightColor,
       ));
+
   static final ThemeData darktMode = ThemeData(
       primaryColor: ColorApp.primaryDarkColorBlue,
       scaffoldBackgroundColor: Colors.transparent,
@@ -42,7 +43,7 @@ class ThemeApp {
         bodyMedium: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.w400,
-            color: ColorApp.whiteColor),
+            color: ColorApp.primaryDarkColor),
       ),
       dividerTheme: const DividerThemeData(
           thickness: 3, color: ColorApp.primaryDarkColor),
