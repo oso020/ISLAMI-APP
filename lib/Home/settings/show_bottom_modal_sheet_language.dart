@@ -25,21 +25,25 @@ class _ModalSheetState extends State<ModalSheet> {
                 provider.changeLanguage("en");
               },
               child: provider.locale == "en"
-                  ? selectedWidget(AppLocalizations.of(context)!.english)
+                  ? selectedWidget(AppLocalizations.of(context)!.english, provider.theme == ThemeMode.light
+                  ? ColorApp.primaryLightColor
+                  : ColorApp.primaryDarkColor,)
                   : unSelectedWidget(AppLocalizations.of(context)!.english)),
           InkWell(
               onTap: () {
                 provider.changeLanguage("ar");
               },
               child: provider.locale == "ar"
-                  ? selectedWidget(AppLocalizations.of(context)!.arabic)
+                  ? selectedWidget(AppLocalizations.of(context)!.arabic, provider.theme == ThemeMode.light
+              ? ColorApp.primaryLightColor
+                : ColorApp.primaryDarkColor,)
                   : unSelectedWidget(AppLocalizations.of(context)!.arabic))
         ],
       ),
     );
   }
 
-  Widget selectedWidget(String text) {
+  Widget selectedWidget(String text,Color theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -48,7 +52,7 @@ class _ModalSheetState extends State<ModalSheet> {
           style: Theme.of(context)
               .textTheme
               .bodyMedium!.copyWith(
-                color: ColorApp.primaryLightColor,
+                color: theme,
               ),
         ),
         Icon(

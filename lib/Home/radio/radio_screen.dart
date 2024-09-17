@@ -22,7 +22,7 @@ class RadioScreen extends StatelessWidget {
     var provider = Provider.of<AppConfigProvider>(context);
 
     return FutureBuilder<RadioModel>(
-      future: getRadio(),
+      future: getRadio(provider.locale=="ar"?"ar":"eng"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting){
           return Center(
@@ -61,9 +61,11 @@ class RadioScreen extends StatelessWidget {
     },);
   }
 
-  Future<RadioModel>getRadio() async {
+  Future<RadioModel>getRadio(String language) async {
     // https://mp3quran.net/api/v3/radios
-    var url = Uri.https('mp3quran.net', '/api/v3/radios');
+    var url = Uri.https('mp3quran.net', '/api/v3/radios',{
+      "language":language
+    });
 
     var response = await http.get(url);
 

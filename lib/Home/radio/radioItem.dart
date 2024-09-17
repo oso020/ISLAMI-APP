@@ -29,26 +29,42 @@ class RadioItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
-                InkWell(
-                  onTap:()async{
-                    await audioPlayer.stop();
-                    await audioPlayer.play(UrlSource(radio.url.toString()));
+                Column(
+                  children: [
+                    InkWell(
+                      onTap:()async{
+                        await audioPlayer.pause();
+                        await audioPlayer.play(UrlSource(radio.url.toString()));
 
-                  },
-                  child: Icon(
-                    Icons.play_arrow,
-                    size: width / 7,
-                  ),
+                      },
+                      child: Icon(
+                        Icons.play_arrow,
+                        size: width / 7,
+                      ),
+                    ),
+                    Text(
+                      "play",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
                 ),
-                InkWell(
-                  onTap:()async{
-                    await audioPlayer.stop();
-                  },
+                Column(
+                  children: [
+                    InkWell(
+                      onTap:()async{
+                        await audioPlayer.stop();
+                      },
 
-                  child: Icon(
-                    Icons.stop,
-                    size: width / 7,
-                  ),
+                      child: Icon(
+                        Icons.stop,
+                        size: width / 7,
+                      ),
+                    ),
+                    Text(
+                      "pasue",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
                 ),
 
               ],
