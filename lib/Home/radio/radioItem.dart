@@ -5,10 +5,17 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/Home/radio/RadioModel.dart';
 
-class RadioItem extends StatelessWidget {
+class RadioItem extends StatefulWidget {
   Radios radio;
   AudioPlayer audioPlayer;
    RadioItem({super.key, required this.radio , required this.audioPlayer});
+
+  @override
+  State<RadioItem> createState() => _RadioItemState();
+}
+
+class _RadioItemState extends State<RadioItem> {
+   var isPlayed=false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +27,7 @@ class RadioItem extends StatelessWidget {
         children: [
 
           Text(
-            radio.name.toString(),
+            widget.radio.name.toString(),
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           Padding(
@@ -33,39 +40,32 @@ class RadioItem extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap:()async{
-                        await audioPlayer.pause();
-                        await audioPlayer.play(UrlSource(radio.url.toString()));
+                        isPlayed= !isPlayed;
+                        if(isPlayed == true){
+                          await widget.audioPlayer.pause();
+                          await widget.audioPlayer.play(UrlSource(widget.radio.url.toString()));
+                        }else{
+                          await widget.audioPlayer.pause();
+
+                        }
+                        setState(() {
+
+                        });
+
 
                       },
                       child: Icon(
-                        Icons.play_arrow,
+                        isPlayed==false?Icons.play_arrow:Icons.stop,
                         size: width / 7,
                       ),
                     ),
                     Text(
-                      "play",
+                      isPlayed==false?"play" :"pause",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    InkWell(
-                      onTap:()async{
-                        await audioPlayer.stop();
-                      },
 
-                      child: Icon(
-                        Icons.stop,
-                        size: width / 7,
-                      ),
-                    ),
-                    Text(
-                      "pasue",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
 
               ],
             ),
@@ -74,6 +74,4 @@ class RadioItem extends StatelessWidget {
       ),
     );
   }
-
-
 }
