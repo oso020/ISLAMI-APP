@@ -26,28 +26,32 @@ class _ModalSheetThemeState extends State<ModalSheetTheme> {
                 provider.changeTheme(ThemeMode.light);
               },
               child: provider.theme == ThemeMode.light
-                  ? selectedWidget(AppLocalizations.of(context)!.light)
+                  ? selectedWidget(AppLocalizations.of(context)!.light,provider.theme == ThemeMode.light
+                  ? ColorApp.primaryLightColor
+                  : ColorApp.primaryDarkColor,)
                   : unSelectedWidget(AppLocalizations.of(context)!.light)),
           InkWell(
               onTap: () {
                 provider.changeTheme(ThemeMode.dark);
               },
               child: provider.theme == ThemeMode.dark
-                  ? selectedWidget(AppLocalizations.of(context)!.dark)
+                  ? selectedWidget(AppLocalizations.of(context)!.dark,provider.theme == ThemeMode.light
+                  ? ColorApp.primaryLightColor
+                  : ColorApp.primaryDarkColor,)
                   : unSelectedWidget(AppLocalizations.of(context)!.dark))
         ],
       ),
     );
   }
 
-  Widget selectedWidget(String text) {
+  Widget selectedWidget(String text,Color theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           text,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: ColorApp.primaryLightColor,
+                color: theme,
               ),
         ),
         Icon(

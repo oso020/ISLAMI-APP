@@ -8,6 +8,7 @@ import 'package:islami_app/Home/radio/RadioModel.dart';
 class RadioItem extends StatefulWidget {
   Radios radio;
   AudioPlayer audioPlayer;
+
    RadioItem({super.key, required this.radio , required this.audioPlayer});
 
   @override
