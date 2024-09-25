@@ -56,7 +56,7 @@ class RadioScreen extends StatelessWidget {
       }
 
       else{
-        return Text("please Check Your Network");
+        return Center(child: Text("please Check Your Network"));
       }
     },);
   }
