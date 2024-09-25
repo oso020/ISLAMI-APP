@@ -86,7 +86,7 @@ The *Islami Application* is a Flutter-based app that provides detailed informati
   <img src="https://github.com/oso020/ISLAMI-APP/blob/development/screen_shots/Radio_Dark.png" alt="Light" width="220" style="margin: 10px;"/>
 </p>
 <p align="center">
-  <img src="https://github.com/oso020/ISLAMI-APP/blob/development/screen_shots/Settings.png" alt="Light" width="220" style="margin: 10px;"/>
+  <img src="https://github.com/oso020/ISLAMI-APP/blob/development/screen_shots/Settings_Dark.png" alt="Light" width="220" style="margin: 10px;"/>
 </p>
 
 ## License
